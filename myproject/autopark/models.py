@@ -1,5 +1,6 @@
 """Models for Autopark app."""
 from django.db import models
+from .validators import plate_number_validator
 
 
 class Driver(models.Model):
@@ -24,7 +25,11 @@ class Vehicle(models.Model):
     )
     make = models.CharField(max_length=250)
     vehicle_model = models.CharField(max_length=250)
-    plate_number = models.CharField(max_length=10)
+    plate_number = models.CharField(
+        max_length=10,
+        unique=True,
+        validators=[plate_number_validator]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
 
