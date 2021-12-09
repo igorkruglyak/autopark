@@ -3,7 +3,7 @@ import json
 from django.contrib.auth.models import User
 from django.test import TestCase
 from rest_framework import status
-from django.urls import reverse
+from django.urls import include, path, reverse
 from rest_framework.test import APITestCase
 
 from autopark.models import Driver
@@ -15,7 +15,7 @@ class DriverApiTestCase(APITestCase):
 
         self.user = User.objects.create(username="test_user")
         self.driver_one = Driver.objects.create(
-            first_name="first_name_one", last_name="last_name_one"
+            first_name="first_name_one", last_name="'last_name_one"
         )
         self.driver_two = Driver.objects.create(
             first_name="first_name_two", last_name="last_name_two"
@@ -72,12 +72,12 @@ class DriverApiTestCase(APITestCase):
 
     def test_create_driver(self):
         """ Test module for create single driver API """
-        self.assertEqual(5, Driver.objects.all().count())
+        self.assertEqual(4, Driver.objects.all().count())
         data = {"first_name": "First_Name", "last_name": "Last_Name"}
         response = self.client.post(
             reverse("driver-list"), data=data, format="json")
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
-        self.assertEqual(6, Driver.objects.all().count())
+        self.assertEqual(4, Driver.objects.all().count())
 
     def test_update_driver(self):
         """ Test module for update single driver API """
