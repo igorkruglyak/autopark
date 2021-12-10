@@ -4,7 +4,7 @@
 REST API application for autopark with car and drivers 
 The application working with Drivers and Vehicles models.
 
-## Built With
+# Built With
 * [Python v3.10.0](https://www.python.org/) - Programming language
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [Django Rest Framework](https://www.django-rest-framework.org/) - The toolkit for building Web APIs.
@@ -13,15 +13,15 @@ The application working with Drivers and Vehicles models.
 * [Pyenv](https://github.com/pyenv/pyenv) - Simple Python Version Management
 * [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) - plugin that provides features to manage virtualenvs and conda environments for Python on UNIX-like systems.
 
-## General Notes
+# General Notes
 + An autopark app has already been provided in this repo upon which you will be adding a new assesement feature.
 + The project provides to get, post, update and delete information about drivers/vehicles. 
 + Depends on your deployment, you may choose any SQL database Django supported such as SQLite3, PostgreSQL, and MySQL (default is SQLite3).
 
 
-## Endpoint`s
+# Endpoints
 
-Driver:
+## Driver:
 + GET /drivers/driver/ - output drivers list
 + GET /drivers/driver/?created_at__gte=10-11-2021 - output of the list of drivers created after 10-11-2021
 + GET /drivers/driver/?created_at__lte=16-11-2021 - output of the list of drivers created before 16-11-2021
@@ -44,7 +44,7 @@ Driver:
     }
 + DELETE /drivers/driver/<driver_id>/ - delete driver
 
-Vehicle:
+## Vehicle:
 + GET /vehicles/vehicle/ - output vehicles list
 + GET /vehicles/vehicle/?with_drivers=yes - output of the list of cars with drivers
 + GET /vehicles/vehicle/?with_drivers=no - output of the list of cars without drivers
