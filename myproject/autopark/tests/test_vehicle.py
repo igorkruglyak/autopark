@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from ..models import Driver, Vehicle
 
 
-class BlogTests(TestCase):
+class VehicleTests(TestCase):
 
     @classmethod
     def setUp(cls):
