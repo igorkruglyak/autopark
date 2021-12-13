@@ -15,6 +15,7 @@ class Driver(models.Model):
         """Render draver information as a string."""
         return f'{self.first_name} {self.last_name}'
 
+    
 class Vehicle(models.Model):
     """Vehicle model for Autopark app."""
 
