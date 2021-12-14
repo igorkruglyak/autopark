@@ -13,27 +13,23 @@ class Driver(models.Model):
 
     def __str__(self):
         """Render draver information as a string."""
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
-    
+
 class Vehicle(models.Model):
     """Vehicle model for Autopark app."""
 
     driver_id = models.ForeignKey(
-        Driver, 
-        on_delete=models.CASCADE, 
-        blank=True, null=True
+        Driver, on_delete=models.CASCADE, blank=True, null=True
     )
     make = models.CharField(max_length=250)
     vehicle_model = models.CharField(max_length=250)
     plate_number = models.CharField(
-        max_length=10,
-        unique=True,
-        validators=[plate_number_validator]
+        max_length=10, unique=True, validators=[plate_number_validator]
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(blank=True, null=True, auto_now=True)
 
     def __str__(self):
         """Render vehicle information as a string."""
-        return f'{self.vehicle_model} {self.plate_number}'
+        return f"{self.vehicle_model} {self.plate_number}"

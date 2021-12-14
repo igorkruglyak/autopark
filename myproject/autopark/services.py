@@ -5,16 +5,18 @@ from rest_framework.views import Response
 
 
 def get_drivers_list(request):
-    if 'created_at__gte' in request.GET:
-        date = get_splited_date(request.GET['created_at__gte'], '-')
+    if "created_at__gte" in request.GET:
+        date = get_splited_date(request.GET["created_at__gte"], "-")
         # Get all drivers which were created gte request.created_at date
-        drivers_list = Driver.objects.filter(created_at__gte=datetime.datetime(date[2],
-                                                                               date[1], date[0]))
-    elif 'created_at__lte' in request.GET:
-        date = get_splited_date(request.GET['created_at__lte'], '-')
+        drivers_list = Driver.objects.filter(
+            created_at__gte=datetime.datetime(date[2], date[1], date[0])
+        )
+    elif "created_at__lte" in request.GET:
+        date = get_splited_date(request.GET["created_at__lte"], "-")
         # Get all drivers which were created lte request.created_at date
-        drivers_list = Driver.objects.filter(created_at__lte=datetime.datetime(date[2],
-                                                                               date[1], date[0]))
+        drivers_list = Driver.objects.filter(
+            created_at__lte=datetime.datetime(date[2], date[1], date[0])
+        )
     else:
         drivers_list = Driver.objects.all()
     return drivers_list
@@ -26,8 +28,8 @@ def get_splited_date(date, symbol):
 
 
 def get_vehicles(request):
-    if 'with_drivers' in request.GET:
-        if request.GET['with_drivers'] == 'yes':
+    if "with_drivers" in request.GET:
+        if request.GET["with_drivers"] == "yes":
             return Vehicle.objects.filter(driver_id__isnull=False)
         return Vehicle.objects.filter(driver_id__isnull=True)
     return Vehicle.objects.all()
