@@ -1,9 +1,15 @@
+from datetime import datetime
+
+from rest_framework import status
+from rest_framework.test import APITestCase
+
 from django.test import TestCase
 from django.contrib.auth.models import User
 from ..models import Driver, Vehicle
+from ..serializers import DriversListSerializer, VehicleListSerializer
 
 
-class VehicleTests(TestCase):
+class VehicleTests(APITestCase):
 
     @classmethod
     def setUp(cls):
@@ -12,11 +18,7 @@ class VehicleTests(TestCase):
             first_name='fname1', last_name='lname1')
         test_driver1.save()
 
-        # Create a vehicle
-        test_post = Driver.objects.create(
-            first_name='fname1', last_name='lname1')
-        test_post.save()
-        
+        # Create a vehicle        
         test_vehicle = Vehicle.objects.create(
             driver_id=test_driver1,
             make='make_one',
@@ -33,5 +35,3 @@ class VehicleTests(TestCase):
         self.assertEqual(make, 'make_one')
         self.assertEqual(vehicle_model, 'model_one')
         self.assertEqual(plate_number, 'AB 7777 AB')
-
-

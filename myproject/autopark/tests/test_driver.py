@@ -12,7 +12,7 @@ class DriverTests(TestCase):
             username='testuser1', password='abc123')
         testuser1.save()
 
-        # Create a blog driver
+        # Create a driver
         test_post = Driver.objects.create(
             first_name='fname1', last_name='lname1')
         test_post.save()
